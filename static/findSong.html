@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Songs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <style>
+        *{
+            font-family: 'Righteous', cursive;
+            margin: 0;
+            padding: 0;
+            
+        }
+        body{
+            /* background-color: #191414; */
+            background-image: linear-gradient(180deg, rgb(9.804% 7.843% 7.843%) 0%, rgb(9.804% 7.844% 7.844%) 6.25%, rgb(9.804% 7.859% 7.849%) 12.5%, rgb(9.806% 7.923% 7.874%) 18.75%, rgb(9.81% 8.096% 7.941%) 25%, rgb(9.819% 8.46% 8.082%) 31.25%, rgb(9.835% 9.123% 8.339%) 37.5%, rgb(9.861% 10.214% 8.763%) 43.75%, rgb(9.902% 11.887% 9.412%) 50%, rgb(9.961% 14.321% 10.356%) 56.25%, rgb(10.043% 17.716% 11.673%) 62.5%, rgb(10.154% 22.299% 13.45%) 68.75%, rgb(10.3% 28.316% 15.784%) 75%, rgb(10.488% 36.042% 18.781%) 81.25%, rgb(10.723% 45.773% 22.555%) 87.5%, rgb(11.016% 57.827% 27.231%) 93.75%, rgb(11.373% 72.549% 32.941%) 100% );
+            width: 100vw;
+            height: 100vh;
+        }
+        #imgcontainer{
+            width: fit-content;
+            margin: auto;
+        }
+        #logo{
+            width: 30vw;
+        }
+        #searchbar{
+            width: fit-content;
+            margin: auto;
+        }
+        #searchbar input{
+            width: 40vw;
+            height: 10vh;
+            border: none;
+            border-radius: 5vw;
+            padding: 0 2vw;
+            font-size: 20px;
+            font-family: inherit;
+            font-weight: bold;
+        }
+        #searchbar input:focus{
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="imgcontainer">
+        <img src="images/logo2.png" alt="logo" id="logo">
+    </div>
+    <div id="searchbar">
+        <form action="findSong" method="post">
+            <input type="text" name="query" placeholder="What's missing in your database?" autocomplete="off">
+        </form>
+    </div>
+</body>
+</html>

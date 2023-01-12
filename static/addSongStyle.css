@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Righteous', cursive;
+}
+body::before{
+    content: "";
+    background-image: linear-gradient(0deg, rgb(7.451% 49.804% 22.353%) 0%, rgb(7.986% 40.257% 19.052%) 6.25%, rgb(8.425% 32.44% 16.349%) 12.5%, rgb(8.778% 26.13% 14.167%) 18.75%, rgb(9.059% 21.12% 12.434%) 25%, rgb(9.278% 17.217% 11.085%) 31.25%, rgb(9.445% 14.246% 10.057%) 37.5%, rgb(9.568% 12.044% 9.296%) 43.75%, rgb(9.657% 10.466% 8.75%) 50%, rgb(9.718% 9.38% 8.375%) 56.25%, rgb(9.757% 8.673% 8.13%) 62.5%, rgb(9.781% 8.243% 7.982%) 68.75%, rgb(9.795% 8.007% 7.9%) 75%, rgb(9.801% 7.895% 7.861%) 81.25%, rgb(9.803% 7.853% 7.847%) 87.5%, rgb(9.804% 7.844% 7.843%) 93.75%, rgb(9.804% 7.843% 7.843%) 100% );
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+body{
+    color: white;
+}
+#header{
+    text-align: center;
+    background-color: #1b1b1b;
+    padding: 3vh;
+    padding-bottom: 4vh;
+}
+
+#iframecontainer{
+    width: fit-content;
+    margin: 5vh auto;
+}
+
+#videoId{
+    width: 50vw;
+    height: 50vh
+}
+#formcontainer{
+    width: fit-content;
+    margin: 7vh auto;
+    font-size: 26px;
+    font-weight: bold;
+}
+.textbox{
+    margin: 2vh 0vh;
+}
+.textbox input{
+    width: 25vw;
+    height: 4vh;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    padding: 1.5vh 1vw;
+    font-size: 18px;
+}
+
+#addbtn{
+    
+    background-color: rgb(222 220 220);
+    font-size: 18px;
+    padding: 1vh 1vw;
+    border: none;
+    border-radius: 0.8vw;
+    display: block;
+    margin: auto;
+    margin-top: 5vh;
+    font-weight: bold;
+}
+
+
+#addbtn:hover{
+    cursor: pointer;
+    /* background-color: white; */
+    /* box-shadow: 1px 1px 1px white, -1px -1px 1px white; */
+    animation-name: slow;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+@keyframes slow{
+    from {
+        background-color: rgb(222 220 220);
+    }
+    to{
+        background-color: white;
+        box-shadow: 0.5px 0.5px 0.5px white, -0.5px -0.5px 0.5px white;
+    }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #button{
+            width: fit-content;
+            margin: auto;
+            margin-top: 30px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div id="videoplayer">
+        <!-- <iframe width="1220" height="480" src="https://www.youtube.com/embed/YjllO7-K9k4" id="magic"></iframe> -->
+        <iframe onclick="hide()" width="1220" height="480" id="videoId" src="https://www.youtube.com/embed/YxWlaYCA8MU?enablejsapi=1&version=3&playerapiid=ytplayer"> </iframe>
+        
+    </div>
+    <div id="buttons">
+
+        <button onclick="toogle1()">Click this</button>
+        <button onclick="toogle2()">Click this</button>
+    </div>
+
+    <script>
+
+        let video = document.getElementById("videoId")
+        function toogle1(){
+            video.contentWindow.postMessage( '{"event":"command", "func":"playVideo", "args":""}', '*');
+
+        }
+        
+        function toogle2(){
+            video.contentWindow.postMessage( '{"event":"command", "func":"pauseVideo", "args":""}', '*');
+        }
+
+        function hide(){
+            video.style.display = 'none';
+        }
+
+    </script>
+</body>
+</html>

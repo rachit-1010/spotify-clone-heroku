@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <title>Song Name</title>
+    <link rel="stylesheet" href="addSongStyle.css">
+
+    
+</head>
+<body>
+    <div id="header">
+        <h2>Add song to database!</h2>
+    </div>
+    <div id="iframecontainer">
+        <iframe id="videoId" src="#" frameBorder="0"> </iframe>
+    </div>
+    <div id="formcontainer">
+        <form action="/submit">
+            <label for="name">Song Name</label>
+            <div class="textbox">
+                <input type="text" name="myName" id="name" autocomplete="off">
+            </div>
+            <label for="album">Album/Movie</label>
+            <div class="textbox">
+                <input type="text" name="album" autocomplete="off">
+            </div>
+            <input type="hidden" name="videoId" value="" id="hide">
+            <button id="addbtn">Add Song</button>
+        </form>
+    </div>
+
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const videoId = urlParams.get('videoId');
+        const url = "https://www.youtube.com/embed/" + videoId + "?enablejsapi=1&version=3&playerapiid=ytplayer";
+        let iframeele = document.getElementById("videoId");
+        console.log(iframeele);
+        iframeele.setAttribute("src", url);
+
+        const hiddenElement = document.getElementById('hide');
+        hiddenElement.setAttribute("value", videoId);
+    </script>   
+</body>
+</html>

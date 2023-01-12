@@ -1,0 +1,65 @@
+html
+  head
+    title= title
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="searchSongListStyle.css">
+  body
+    div#header 
+      h2 Select the appropriate Song!
+    div#container 
+      - var n = 0;
+      each url in urls
+        div.boxes 
+          iframe(src=url, frameborder="0", class="videoId")
+          div.btn 
+            button.selectbtn Select
+          div.continuebtn
+            button Continue
+    div#footer 
+
+    script. 
+      let btn = document.querySelectorAll(".selectbtn");
+        let head = document.querySelector("#header h2");
+        let headDiv = document.getElementById("header");
+        let continuebtn = document.querySelectorAll(".continuebtn");
+        let iframeele = document.querySelectorAll(".videoId");
+
+        for(let index = 0; index<6; index++){
+            console.log(btn[index]);
+            btn[index].addEventListener('click', function btnClicked(){
+                if (btn[index].innerHTML == 'Select'){
+                    // console.log('line 147' + ' '+ index);
+                    for (let i = 0; i < 6; i++) {
+                        if (i==index){
+                            btn[index].innerHTML = 'Selected';
+                            head.innerHTML = 'Continue';
+                            continuebtn[index].style.display = 'block';
+                        }
+                        else{
+                            btn[i].innerHTML = 'Select';
+                            continuebtn[i].style.display = 'none';
+                        }
+                        
+                    }
+                    // btn[index].innerHTML = 'Selected';
+                    // head.innerHTML = 'Continue';
+                    // continuebtn[index].style.display = 'block';
+                }
+                else{
+                    btn[index].innerHTML = 'Select';
+                    head.innerHTML = 'Select the appropriate Song!';
+                    continuebtn[index].style.display = 'none';
+                }
+            });
+
+            continuebtn[index].addEventListener('click', function continuebtnclicked(){
+              const urlofbtn = iframeele[index].getAttribute('src');
+              let position1 = urlofbtn.indexOf('/embed/');
+              position1 = position1 + 7;
+              let position2 = urlofbtn.indexOf('?enable');
+              window.open("/addSong?videoId=" + urlofbtn.slice(position1,position2), "_self");
+            })
+        }
+
+      
+

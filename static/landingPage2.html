@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        
+        *{
+            padding: 0;
+            margin: 0;
+            font-family: 'Righteous', cursive;
+            user-select: none;
+        }
+        #outcontainer{
+            display: flex;
+        }
+        #sidebar{
+            background-color: rgba(0,0,0,255);
+            height: 100vh;
+            width: 15vw;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        #main{
+            background-color: #121212;
+            position: absolute;
+            /* left: 0; */
+            left: 15vw;
+            top: 0;
+            right: 0;
+            /* height: 85vh; */
+            color: white;
+            user-select: none;
+        }
+
+        #controlpanel{
+            height: 15vh;
+            width: 100vw;
+            background-color: rgba(24,24,24,255);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            display: flex;
+        }
+
+        #video{
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            /* display: none; */
+            z-index: -1;
+        }
+        #header{
+            background-color: rgba(92,89,89,255);
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+        }
+        #header h2{
+            padding: 1vw;
+            padding-left: 2vw;
+        }
+        #header button{
+            margin-right: 3vw;
+            height: 50%;
+            align-self: center;
+            outline: none;
+            background-color: #1DB954;
+        }
+        #rowheader{
+            display: grid;
+            grid-template-columns: 1fr 5fr 4fr 1.5fr;
+            grid-gap: 1vw;
+            border-bottom: 1px solid grey;
+            padding: 0.5vw 1vw;
+        }
+        .rowheaderele{
+            color: #808080;
+            /* text-align: center; */
+            /* border: 2px solid red; */
+        }
+        .rowheaderele:first-child{
+            text-align: right;
+            padding-right: 1vw;
+        }
+        .songelediv{
+            display: grid;
+            grid-template-columns: 1fr 5fr 4fr 1.5fr;
+            /* grid-gap: 1vw; */
+        }
+        .songele{
+            padding: 2vh 1vw;
+            /* border: 2px solid red; */
+        }
+        .songelediv:hover {
+            background-color: #2a2a2a;
+        }
+        .songele:first-child{
+            text-align: right;
+        }
+
+        #playpause{
+            width: fit-content;
+            margin: 4vh auto;
+            position: absolute;
+            left: 49vw;
+        }
+
+        #playpause button {
+            outline: none;
+            border: none;
+        }
+
+        #playpause button img{
+            width: 3vw;
+            height: fit-content;
+            outline: none;
+            border: none;
+        }
+
+        #currentSong{
+            padding: 3vh 3vw;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="outcontainer">
+        <div id="sidebar"></div>
+
+        <div id="main">
+
+            <div id="header">
+                <h2>ALL SONGS</h2>
+                <button type="button" class="btn btn-success" id="showvideobtn">Show Video</button>
+
+            </div>
+
+            <div id="rowheader">
+                <div class="rowheaderele">#</div>
+                <div class="rowheaderele">Title</div>
+                <div class="rowheaderele">Album</div>
+                <div class="rowheaderele">Duration</div>
+            </div>
+            
+            <div id="songs">
+
+                <div class="songelediv" data-videoId="e-ORhEE9VVg">
+                    <div class="songele">1</div>
+                    <div class="songele">Blank Space</div>
+                    <div class="songele">Taylor Swift</div>
+                    <div class="songele">4:05</div>
+                </div>
+
+                <div class="songelediv" data-videoId="VuNIsY6JdUw">
+                    <div class="songele">2</div>
+                    <div class="songele">You belong with me</div>
+                    <div class="songele">Taylor Swift</div>
+                    <div class="songele">4:05</div>
+                    <div class="vid"></div>
+                </div>
+
+                <div class="songelediv" data-videoId="7EvwIw4gIyk">
+                    <div class="songele">3</div>
+                    <div class="songele">Willow</div>
+                    <div class="songele">Taylor Swift</div>
+                    <div class="songele">4:05</div>
+                    <div class="vid"></div>
+                </div>
+
+                <div class="songelediv" data-videoId="YxWlaYCA8MU">
+                    <div class="songele">4</div>
+                    <div class="songele">Jhoome Jo Pathan</div>
+                    <div class="songele">Pathaan</div>
+                    <div class="songele">4:05</div>
+                    <div class="vid"></div>
+                </div>
+
+                <div class="songelediv" data-videoId="blRe2wQP-_U">
+                    <div class="songele">5</div>
+                    <div class="songele">Aise Kyun</div>
+                    <div class="songele">Mismatched</div>
+                    <div class="songele">4:05</div>
+                    <div class="vid"></div>
+                </div>
+
+                <div class="songelediv" data-videoId="g6fnFALEseI">
+                    <div class="songele">6</div>
+                    <div class="songele">Kesariya</div>
+                    <div class="songele">Brahmastra</div>
+                    <div class="songele">4:05</div>
+                    <div class="vid"></div>
+                </div>
+
+                
+                <div class="songelediv" data-videoId="CezkrlxFYsw">
+                    <div class="songele">7</div>
+                    <div class="songele">Jashn-e-Bahara</div>
+                    <div class="songele">Jodhaa Akbar</div>
+                    <div class="songele">4:05</div>
+                    <div class="vid"></div>
+                </div>
+
+                <div class="songelediv" data-videoId="S1aQhVUy_9g">
+                    <div class="songele">8</div>
+                    <div class="songele">Maahi Ve</div>
+                    <div class="songele">Highway</div>
+                    <div class="songele">4:05</div>
+                    <div class="vid"></div>
+                </div>
+
+                <div class="songelediv" data-videoId="8HDTS80dlr4">
+                    <div class="songele">9</div>
+                    <div class="songele">Patakha Guddi</div>
+                    <div class="songele">Highway</div>
+                    <div class="songele">4:05</div>
+                    <div class="vid"></div>
+                </div>
+
+                <div class="songelediv" data-videoId="8HDTS80dlr4">
+                    <div class="songele">9</div>
+                    <div class="songele">Patakha Guddi</div>
+                    <div class="songele">Highway</div>
+                    <div class="songele">4:05</div>
+                    <div class="vid"></div>
+                </div>
+
+                <div class="songelediv" data-videoId="8HDTS80dlr4">
+                    <div class="songele">9</div>
+                    <div class="songele">Patakha Guddi</div>
+                    <div class="songele">Highway</div>
+                    <div class="songele">4:05</div>
+                    <div class="vid"></div>
+                </div>
+
+                <div class="songelediv" data-videoId="8HDTS80dlr4">
+                    <div class="songele">9</div>
+                    <div class="songele">Patakha Guddi</div>
+                    <div class="songele">Highway</div>
+                    <div class="songele">4:05</div>
+                    <div class="vid"></div>
+                </div>  
+
+                <div class="songelediv" data-videoId="8HDTS80dlr4">
+                    <div class="songele">9</div>
+                    <div class="songele">Patakha Guddi</div>
+                    <div class="songele">Highway</div>
+                    <div class="songele">4:05</div>
+                    <div class="vid"></div>
+                </div>
+
+            </div>
+
+            <!-- <div class="songelediv" data-videoId="YxWlaYCA8MU">
+                <div class="songele">3</div>
+                <div class="songele">Jhoome jo pathan</div>
+                <div class="songele">Pathan</div>
+                <div class="songele">4:05</div>
+                <div class="vid"></div>
+            </div> -->
+        </div>
+
+        <div id="controlpanel">
+            <div id="currentSong">
+                Select a Song!
+            </div>
+            <div id="playpause">
+                <button><img src="./images/playButton.png" alt="Play/Pause"></button>
+            </div>
+        </div>
+
+        <div id="video">
+            <!-- <iframe src="https://www.youtube.com/embed/e-ORhEE9VVg?enablejsapi=1&version=3&playerapiid=ytplayer" width="380" height="220" modestbranding="0"  controls="0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="videoplayer"></iframe> -->
+<!-- 
+            <iframe class="videoId" src="https://www.youtube.com/embed/e-ORhEE9VVg?enablejsapi=1&version=3&playerapiid=ytplayer" frameBorder="0"> </iframe> -->
+
+            <div id="player"></div>
+        </div>
+    </div>
+
+    <script>
+
+        
+        
+        var tag = document.createElement('script');
+
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // 3. This function creates an <iframe> (and YouTube player)
+        //    after the API code downloads.
+        var player;
+
+        
+
+        function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+            height: '220',
+            width: '380',
+            videoId: 'YxWlaYCA8MU',
+            // src: 'https://www.youtube.com/embed/YxWlaYCA8MU?enablejsapi=1&version=3&playerapiid=ytplayer',
+
+            playerVars: {
+            'playsinline': 1
+            },
+
+            events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+            }
+        });
+        }
+
+        function onPlayerReady(event) {
+        // event.target.playVideo();
+      }
+
+      var done = false;
+      function onPlayerStateChange(event) {
+        // if (event.data == YT.PlayerState.PLAYING && !done) {
+        //   setTimeout(stopVideo, 6000);
+        //   done = true;
+        // }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+        
+    //-----------------------------------------------------
+
+
+        // let iframeplayer = document.getElementById('videoplayer');
+
+        let btn = document.getElementById('playpause');
+        let playpauseimg = document.querySelector('#playpause button img');
+
+        btn.addEventListener('click', () => {
+            if (player.getPlayerState() == 1){
+                player.pauseVideo();
+                playpauseimg.setAttribute('src', "./images/playButton.png");
+            }
+            else {
+                playpauseimg.setAttribute('src', "./images/pauseButton.png");
+                player.playVideo();
+            }
+            // console.log(iframeplayer.getPlayerState());
+
+
+            // iframeplayer.contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
+        });
+
+        let songs = document.querySelectorAll('.songelediv');
+        let currentsong = document.getElementById('currentSong');
+        let showvideobtn = document.getElementById('showvideobtn');
+
+        for (let index = 0; index<songs.length; index++){
+            songs[index].addEventListener('click', () => {
+                currentsong.innerHTML = songs[index].children[1].innerHTML;
+                
+                playpauseimg.setAttribute('src', "./images/pauseButton.png");
+                player.loadVideoById(songs[index].getAttribute('data-videoId'));
+                player.playVideo();
+            });
+        }
+
+        showvideobtn.addEventListener('click', () => {
+            let videoplayer = document.getElementById('video');
+
+            if (videoplayer.style.zIndex == 1){
+                showvideobtn.innerHTML = 'Show Video'
+                videoplayer.style.zIndex = -1;
+            }
+            else{
+                showvideobtn.innerHTML = 'Hide Video'
+                videoplayer.style.zIndex = 1;
+            }
+        });
+
+
+    </script>
+</body>
+</html>
