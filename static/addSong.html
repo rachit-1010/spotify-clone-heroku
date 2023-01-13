@@ -21,11 +21,15 @@
         <form action="/submit">
             <label for="name">Song Name</label>
             <div class="textbox">
-                <input type="text" name="myName" id="name" autocomplete="off">
+                <input type="text" name="myName" id="name" autocomplete="off" placeholder="Willow">
             </div>
             <label for="album">Album/Movie</label>
             <div class="textbox">
-                <input type="text" name="album" autocomplete="off">
+                <input type="text" name="album" autocomplete="off" placeholder="Taylor Swift">
+            </div>
+            <label for="duration">Duration</label>
+            <div class="textbox">
+                <input type="text" name="duration" id="duration" autocomplete="off" placeholder="4:05">
             </div>
             <input type="hidden" name="videoId" value="" id="hide">
             <button id="addbtn">Add Song</button>
